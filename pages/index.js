@@ -1,9 +1,19 @@
 import Head from 'next/head'
-import Image from 'next/image'
+import Link from 'next/Link'
 import Layout from '../components/Layout'
 import separator from '../public/images/separator.png'
+import { getSortedPostsData } from '../lib/posts'
 
-export default function Home() {
+export async function getStaticProps() {
+  const allPostsData = getSortedPostsData()
+  return {
+    props: {
+      allPostsData
+    }
+  }
+}
+
+export default function Home({ allPostsData }) {
   return (
     <Layout>
       <Head>
@@ -11,6 +21,7 @@ export default function Home() {
         <meta name="description" content="JavaScript Developer" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <section className='max-w-3xl mx-auto px-4 mt-12 prose prose-xl dark:prose-invert'>
         <h1>Hello, I'm Dhruvang Gajjar</h1>
         <h4>A JavaScript Developer and Mentor.</h4>
@@ -62,6 +73,20 @@ export default function Home() {
           </li>
           <li>
             <p><span className='font-semibold'>Non-technical</span> <br />Time Management / Problem-solving / Mentorship / Adaptability / Teamwork</p></li>
+        </ul>
+
+        <img src={separator} alt="" className='my-20' />
+
+        <h3>Recent Articles</h3>
+
+        <ul>
+          {allPostsData.map(({ id, date, title }) => (
+            <li key={id}>
+              <Link href={`/blog/${id}`}><a>{title}</a></Link>
+              <br />
+              <small>{date}</small>
+            </li>
+          ))}
         </ul>
 
       </section>
