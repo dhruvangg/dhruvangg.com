@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Link from 'next/Link'
+import Link from "next/link"
 import Layout from '../components/Layout'
 import separator from '../public/images/separator.png'
 import { getSortedPostsData } from '../lib/posts'
