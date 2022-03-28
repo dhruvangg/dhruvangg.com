@@ -15,6 +15,7 @@ export async function getStaticProps() {
 }
 
 export default function Home({ allPostsData }) {
+  console.log(separator);
   return (
     <Layout>
       <Head>
@@ -29,7 +30,7 @@ export default function Home({ allPostsData }) {
 
         <p>I've started my career as a web developer over 6 years ago, and I've collaborated with great individuals to create digital solutions for both corporate and consumer usage. I'm quietly confident, naturally curious, and perpetually focusing on improving my skills one challenge at a time.</p>
 
-        <img src={separator} alt="" className='my-20' />
+        <img src={separator.src} alt="" className='my-20' />
 
         <h3>Work Experience</h3>
 
@@ -45,7 +46,7 @@ export default function Home({ allPostsData }) {
           </li>
         </ul>
 
-        <img src={separator} alt="" className='my-20' />
+        <img src={separator.src} alt="" className='my-20' />
 
         <h3>Awards and Achievements</h3>
 
@@ -57,7 +58,7 @@ export default function Home({ allPostsData }) {
           <p>Certified HubSpot CMS Developer by HubSpot</p>
         </div>
 
-        <img src={separator} alt="" className='my-20' />
+        <img src={separator.src} alt="" className='my-20' />
 
         <h3>Skills</h3>
 
@@ -76,7 +77,7 @@ export default function Home({ allPostsData }) {
             <p><span className='font-semibold'>Non-technical</span> <br />Time Management / Problem-solving / Mentorship / Adaptability / Teamwork</p></li>
         </ul>
 
-        <img src={separator} alt="" className='my-20' />
+        <img src={separator.src} alt="" className='my-20' />
 
         <h3>Recent Articles</h3>
 
