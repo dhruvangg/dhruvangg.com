@@ -1,5 +1,5 @@
-import connect from "database/db"
-import Posts from "models/posts"
+import connect from "../../../database/db"
+import Posts from "../../../models/Posts"
 
 export default async function handler(req, res) {
     connect()
