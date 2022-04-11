@@ -6,7 +6,7 @@ const connect = () => {
         console.log("conected already");
     } else {
         try {
-            mongoose.connect(process.env.DB_CONNECTION, {
+            awaitmongoose.connect(process.env.DB_CONNECTION, {
                 useNewUrlParser: true,
                 useUnifiedTopology: true
             })
