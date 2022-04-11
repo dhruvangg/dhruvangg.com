@@ -1,6 +1,6 @@
 // import axios from 'axios'
 import Head from 'next/head'
-// import Layout from '../../components/Layout'
+import Layout from '../../components/Layout'
 
 // export async function getStaticPaths() {
 //     const posts = await axios.get(`${process.env.APP_URI}/api/post`)
