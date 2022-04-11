@@ -2,11 +2,13 @@ import Head from 'next/head'
 import Link from "next/link"
 import Layout from '../components/Layout'
 import separator from '../public/images/separator.png'
-import { getSortedPostsData } from '../lib/posts'
 import Date from '../components/Date'
+import axios from 'axios'
+
 
 export async function getStaticProps() {
-  const allPostsData = getSortedPostsData()
+  const posts = await axios.get(`${process.env.APP_URI}/api/post?limit=3`)
+  const allPostsData = posts.data
   return {
     props: {
       allPostsData
@@ -15,7 +17,6 @@ export async function getStaticProps() {
 }
 
 export default function Home({ allPostsData }) {
-  console.log(separator);
   return (
     <Layout>
       <Head>
@@ -82,7 +83,16 @@ export default function Home({ allPostsData }) {
         <h3>Recent Articles</h3>
 
         <ul>
-          {allPostsData.map(({ id, date, title }) => (
+          {allPostsData.map(({ _id, name, slug, createdAt }) => (
+            <li key={_id}>
+              <Link href={`/blog/${slug}`}><a>{name}</a></Link>
+              <br />
+              <small>
+                <Date dateString={createdAt} />
+              </small>
+            </li>
+          ))}
+          {/* {allPostsData.map(({ id, date, title }) => (
             <li key={id}>
               <Link href={`/blog/${id}`}><a>{title}</a></Link>
               <br />
@@ -90,7 +100,7 @@ export default function Home({ allPostsData }) {
                 <Date dateString={date} />
               </small>
             </li>
-          ))}
+          ))} */}
         </ul>
 
       </section>

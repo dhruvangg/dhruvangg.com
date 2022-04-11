@@ -1,9 +1,10 @@
+import axios from 'axios'
 import Head from 'next/head'
 import Layout from '../../components/Layout'
-import { getAllPostIds, getPostData } from '../../lib/posts'
 
 export async function getStaticPaths() {
-    const paths = getAllPostIds()
+    const posts = await axios.get(`${process.env.APP_URI}/api/post`)
+    const paths = posts.data.map(el => `/blog/${el.slug}`)
     return {
         paths,
         fallback: false
@@ -11,7 +12,8 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-    const postData = await getPostData(params.id)
+    const post = await axios.get(`${process.env.APP_URI}/api/post/${params.slug}`)
+    const postData = post.data
     return {
         props: {
             postData
@@ -22,14 +24,14 @@ export async function getStaticProps({ params }) {
 export default function Post({ postData }) {
     return <Layout>
         <Head>
-            <title>{postData.title}</title>
+            <title>{postData.name}</title>
         </Head>
         <article>
-            <h1>{postData.title}</h1>
+            <h1>{postData.name}</h1>
             <div>
-                <Date dateString={postData.date} />
+                <Date dateString={postData.createdAt} />
             </div>
-            <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+            <div dangerouslySetInnerHTML={{ __html: postData.content }} />
         </article>
     </Layout>
 }
