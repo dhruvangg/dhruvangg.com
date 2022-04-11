@@ -1,9 +1,9 @@
-import axios from 'axios'
+import { Axios } from 'axios'
 import Head from 'next/head'
 import Layout from '../../components/Layout'
 
 export async function getStaticPaths() {
-    const posts = await axios.get(`${process.env.APP_URI}/api/post`)
+    const posts = await Axios.get(`${process.env.APP_URI}/api/post`)
     const paths = posts.data.map(el => `/blog/${el.slug}`)
     return {
         paths,
@@ -12,7 +12,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-    const post = await axios.get(`${process.env.APP_URI}/api/post/${params.slug}`)
+    const post = await Axios.get(`${process.env.APP_URI}/api/post/${params.slug}`)
     const postData = post.data
     return {
         props: {
