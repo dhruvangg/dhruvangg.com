@@ -3,12 +3,12 @@ import Link from "next/link"
 import Layout from '../components/Layout'
 import separator from '../public/images/separator.png'
 import Date from '../components/Date'
-import { Axios } from 'axios'
-
 
 export async function getStaticProps() {
-  const posts = await Axios.get(`${process.env.APP_URI}/api/post?limit=3`)
-  const allPostsData = posts.data
+  // const posts = await axios.get(`${process.env.APP_URI}/api/post?limit=3`)
+  const posts = await fetch(`${process.env.APP_URI}/api/post?limit=3`)
+  const postsData = await posts.json()
+  const allPostsData = postsData
   return {
     props: {
       allPostsData
