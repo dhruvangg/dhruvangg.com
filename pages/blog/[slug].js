@@ -2,21 +2,12 @@ import Head from 'next/head'
 import Layout from '../../components/Layout'
 
 export async function getStaticPaths() {
-    // const res = await fetch(`${process.env.APP_URI}/api/post`)
-    // const posts = await res.json()
-    // const paths = posts.map((post) => `/blog/${post.slug}`)
-    // console.log(paths);
-    return {
-        paths: [
-            '/blog/improve-website-performance-using-webpavif-image-formats',
-            '/blog/authentication-in-rest-apis',
-            '/blog/detect-caps-lock-in-javascript',
-            '/blog/relative-time-format',
-            '/blog/how-to-check-if-user-is-online-or-not',
-            '/blog/ways-to-get-users-geo-location'
-        ],
-        fallback: false
-    }
+    const res = await fetch(`${process.env.APP_URI}/api/post`)
+    const posts = await res.json()
+    const paths = posts.map((post) => ({
+        params: { slug: post.slug }
+    }))
+    return { paths, fallback: false }
 }
 
 export async function getStaticProps({ params }) {
