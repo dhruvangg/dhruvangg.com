@@ -1,15 +1,11 @@
-import axios from 'axios'
 import Head from 'next/head'
 import Layout from '../../components/Layout'
 
 export async function getStaticPaths() {
-    const posts = await fetch(`${process.env.APP_URI}/api/post`)
-    const postsData = await posts.json()
-    const paths = postsData.map(el => `/blog/${el.slug}`)
-    return {
-        paths,
-        fallback: false
-    }
+    const res = await fetch(`${process.env.APP_URI}/api/post`)
+    const posts = await res.json()
+    const paths = posts.map((post) => `/blog/${post.slug}`)
+    return { paths, fallback: false }
 }
 
 export async function getStaticProps({ params }) {
