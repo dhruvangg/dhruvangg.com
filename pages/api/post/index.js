@@ -7,6 +7,7 @@ export default async function handler(req, res) {
         res.status(200).json("Create new Post")
     } else if (req.method === "GET") {
         const posts = await Posts.find().skip(req.query.offset).limit(req.query.limit).sort({ createdAt: -1 })
+        console.log(posts);
         res.status(200).json(posts)
     }
 }

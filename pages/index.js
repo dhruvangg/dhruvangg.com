@@ -4,32 +4,18 @@ import Layout from '../components/Layout'
 import separator from '../public/images/separator.png'
 import Date from '../components/Date'
 
-// export async function getStaticProps() {
-//   // const posts = await axios.get(`${process.env.APP_URI}/api/post?limit=3`)
-//   const posts = await fetch(`${process.env.APP_URI}/api/post?limit=3`)
-//   const postsData = await posts.json()
-//   console.log(postsData);
-//   const allPostsData = postsData
-//   return {
-//     props: {
-//       allPostsData
-//     }
-//   }
-// }
-
 export async function getStaticProps() {
-  const res = await fetch(`${process.env.APP_URI}/api/post?limit=3`)
-  const posts = await res.json()
-
+  const posts = await fetch(`${process.env.APP_URI}/api/post?limit=3`)
+  const postsData = await posts.json()
+  const allPostsData = postsData
   return {
     props: {
-      posts
+      allPostsData
     }
   }
 }
 
-
-export default function Home({ posts }) {
+export default function Home({ allPostsData }) {
   return (
     <Layout>
       <Head>
@@ -96,7 +82,7 @@ export default function Home({ posts }) {
         <h3>Recent Articles</h3>
 
         <ul>
-          {posts.map(({ _id, name, slug, createdAt }) => (
+          {allPostsData.map(({ _id, name, createdAt, slug }) => (
             <li key={_id}>
               <Link href={`/blog/${slug}`}><a>{name}</a></Link>
               <br />
@@ -105,15 +91,6 @@ export default function Home({ posts }) {
               </small>
             </li>
           ))}
-          {/* {allPostsData.map(({ id, date, title }) => (
-            <li key={id}>
-              <Link href={`/blog/${id}`}><a>{title}</a></Link>
-              <br />
-              <small>
-                <Date dateString={date} />
-              </small>
-            </li>
-          ))} */}
         </ul>
 
       </section>

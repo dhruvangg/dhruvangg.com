@@ -6,13 +6,13 @@ const connect = () => {
         console.log("conected already");
     } else {
         try {
-            awaitmongoose.connect(process.env.DB_CONNECTION, {
+            mongoose.connect(process.env.DB_CONNECTION, {
                 useNewUrlParser: true,
                 useUnifiedTopology: true
             })
             console.log('MongoDB connected...')
         } catch (error) {
-            handleError(error);
+            console.error(error);
         }
     }
 }
