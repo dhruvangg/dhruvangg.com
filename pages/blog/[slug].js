@@ -7,8 +7,9 @@ export async function getStaticPaths() {
     const paths = posts.map((post) => ({
         params: { slug: post.slug },
     }))
-    return { paths, fallback: false }
+    return { paths, fallback: 'blocking' }
 }
+
 
 export async function getStaticProps({ params }) {
     const post = await fetch(`${process.env.APP_URI}/api/post/${params.slug}`)
