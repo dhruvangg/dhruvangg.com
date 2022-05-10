@@ -1,6 +1,25 @@
 import Head from 'next/head'
 import Layout from '../../components/Layout'
 
+export async function getStaticPaths() {
+    const res = await fetch(`${process.env.APP_URI}/api/post`)
+    const posts = await res.json()
+    const paths = posts.map((post) => ({
+        params: { slug: post.slug },
+    }))
+    return { paths, fallback: false }
+}
+
+export async function getStaticProps({ params }) {
+    const post = await fetch(`${process.env.APP_URI}/api/post/${params.slug}`)
+    const postData = await post.json()
+    return {
+        props: {
+            postData
+        }
+    }
+}
+
 export default function Post({ postData }) {
     return <Layout>
         <Head>
@@ -14,23 +33,4 @@ export default function Post({ postData }) {
             <div dangerouslySetInnerHTML={{ __html: postData.content }} />
         </article>
     </Layout>
-}
-
-export async function getStaticProps({ params }) {
-    const post = await fetch(`${process.env.APP_URI}/api/post/${params.slug}`)
-    const postData = await post.json()
-    return {
-        props: {
-            postData
-        }
-    }
-}
-
-export async function getStaticPaths() {
-    const res = await fetch(`${process.env.APP_URI}/api/post`)
-    const posts = await res.json()
-    const paths = posts.map((post) => ({
-        params: { slug: post.slug },
-    }))
-    return { paths, fallback: false }
 }
