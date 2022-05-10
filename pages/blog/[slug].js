@@ -2,11 +2,13 @@ import Head from 'next/head'
 import Layout from '../../components/Layout'
 
 export async function getStaticPaths() {
-    const res = await fetch(`${process.env.APP_URI}/api/post`)
+    const res = await fetch(`${process.env.APP_URI}/api/post?limit=1`)
     const posts = await res.json()
-    const paths = posts.map((post) => ({
+    const paths = JSON.parse(JSON.stringify(posts)).map((post) => ({
         params: { slug: post.slug }
     }))
+    console.log("======================")
+    console.log(paths)
     return { paths, fallback: false }
 }
 
