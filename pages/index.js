@@ -4,17 +4,18 @@ import Layout from '../components/Layout'
 import separator from '../public/images/separator.png'
 import Date from '../components/Date'
 
-export async function getStaticProps() {
-  const posts = await fetch(`${process.env.APP_URI}/api/post?limit=3`)
-  const postsData = await posts.json()
-  const allPostsData = postsData
-  return {
-    props: {
-      allPostsData
-    }
-  }
-}
+// export async function getStaticProps() {
+//   const posts = await fetch(`${process.env.APP_URI}/api/post?limit=3`)
+//   const postsData = await posts.json()
+//   const allPostsData = postsData
+//   return {
+//     props: {
+//       allPostsData
+//     }
+//   }
+// }
 
+//export default function Home({ allPostsData }) {
 export default function Home({ allPostsData }) {
   return (
     <Layout>
@@ -81,7 +82,7 @@ export default function Home({ allPostsData }) {
 
         <h3>Recent Articles</h3>
 
-        <ul>
+        {/* <ul>
           {allPostsData.map(({ _id, name, createdAt, slug }) => (
             <li key={_id}>
               <Link href={`/blog/${slug}`}><a>{name}</a></Link>
@@ -91,7 +92,7 @@ export default function Home({ allPostsData }) {
               </small>
             </li>
           ))}
-        </ul>
+        </ul> */}
 
       </section>
     </Layout>
