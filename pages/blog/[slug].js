@@ -2,13 +2,24 @@ import Head from 'next/head'
 import Layout from '../../components/Layout'
 
 export async function getStaticPaths() {
-    const res = await fetch(`${process.env.APP_URI}/api/post?limit=1`)
-    const posts = await res.json()
-    const paths = JSON.parse(JSON.stringify(posts)).map((post) => ({
-        params: { slug: post.slug }
-    }))
-    console.log("======================")
-    console.log(paths)
+    // const res = await fetch(`${process.env.APP_URI}/api/post`)
+    // const posts = await res.json()
+    // const temp = JSON.parse(JSON.stringify(posts))
+    // const paths = temp.map((post) => ({
+    //     params: { slug: post.slug }
+    // }))
+    const paths = [
+        {
+            params: {
+                slug: 'improve-website-performance-using-webpavif-image-formats'
+            }
+        },
+        { params: { slug: 'authentication-in-rest-apis' } },
+        { params: { slug: 'detect-caps-lock-in-javascript' } },
+        { params: { slug: 'relative-time-format' } },
+        { params: { slug: 'how-to-check-if-user-is-online-or-not' } },
+        { params: { slug: 'ways-to-get-users-geo-location' } }
+    ]
     return { paths, fallback: false }
 }
 
