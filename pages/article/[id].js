@@ -10,16 +10,16 @@ export default function Article({ postData }) {
 export async function getStaticPaths() {
     return {
         paths: [
-            { params: { slug: "1" } },
-            { params: { slug: "2" } },
-            { params: { slug: "3" } }
+            { params: { id: "1" } },
+            { params: { id: "2" } },
+            { params: { id: "3" } }
         ],
         fallback: false,
     }
 }
 
 export async function getStaticProps({ params }) {
-    const post = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.slug}`)
+    const post = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.id}`)
     const postData = await post.json()
     return {
         props: {
