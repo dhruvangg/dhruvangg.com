@@ -16,7 +16,7 @@ import Date from '../components/Date'
 // }
 
 export async function getServerSideProps() {
-  const posts = await fetch(`https://dhruvangg-com.vercel.app/api/post?limit=3`)
+  const posts = await fetch(`${process.env.APP_URI}/api/post?limit=3`)
   const postsData = await posts.json()
   const allPostsData = postsData
   return {
