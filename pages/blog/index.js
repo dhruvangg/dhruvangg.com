@@ -9,8 +9,8 @@ export async function getServerSideProps() {
     const allPostsData = postsData
     return {
         props: {
-            title: 'Blog',
-            description: 'Blog',
+            title: "Blog | Dhruvang Gajjar",
+            description: "I'm JavaScript Developer and mentor with 6 + Years of experience.Open to collaborate on JavaScript based projects.",
             allPostsData
         },
     }
@@ -20,6 +20,26 @@ export default function Blog({ title, description, allPostsData }) {
     return <Layout>
         <Head>
             <title>{title}</title>
+            <meta name="title" content={title} />
+            <meta name="description" content={description} />
+            <meta name="keywords" content={tags.join(",")} />
+            <meta name="robots" content="index, follow" />
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+            <meta name="language" content="English" />
+            <meta name="revisit-after" content="5 days" />
+            <meta name="author" content="Dhruvang Gajjar" />
+
+            <meta property="og:type" content="website" />
+            <meta property="og:url" content="https://www.dhruvang.com/" />
+            <meta property="og:title" content={title} />
+            <meta property="og:description" content={description} />
+            <meta property="og:image" content={Welcome} />
+
+            <meta property="twitter:card" content="summary_large_image" />
+            <meta property="twitter:url" content="https://www.dhruvang.com/" />
+            <meta property="twitter:title" content={title} />
+            <meta property="twitter:description" content={description} />
+            <meta property="twitter:image" content={Welcome} />
         </Head>
         <main className='container mx-auto my-8'>
             <section className="text-gray-600 body-font">

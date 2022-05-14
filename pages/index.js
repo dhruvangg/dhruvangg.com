@@ -3,17 +3,7 @@ import Link from "next/link"
 import Layout from '../components/Layout'
 import separator from '../public/images/separator.png'
 import Date from '../components/Date'
-
-// export async function getStaticProps() {
-//   const posts = await fetch(`${process.env.APP_URI}/api/post?limit=3`)
-//   const postsData = await posts.json()
-//   const allPostsData = postsData
-//   return {
-//     props: {
-//       allPostsData
-//     }
-//   }
-// }
+import Welcome from '../public/images/welcome.png'
 
 export async function getServerSideProps() {
   const posts = await fetch(`${process.env.APP_URI}/api/post?limit=3`)
@@ -30,9 +20,28 @@ export default function Home({ allPostsData }) {
   return (
     <Layout>
       <Head>
-        <title>Dhruvang</title>
-        <meta name="description" content="JavaScript Developer" />
+        <title>Dhruvang | A JavaScript Developer</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta name="title" content="Dhruvang | A JavaScript Developer" />
+        <meta name="description" content="I'm JavaScript Developer and mentor with 6+ Years of experience. Open to collaborate on JavaScript based projects." />
+        <meta name="keywords" content="webdev,dhruvang,dhruvang gajjar,champdecay,javascript,software engineer,web developer" />
+        <meta name="robots" content="index, follow" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="language" content="English" />
+        <meta name="revisit-after" content="5 days" />
+        <meta name="author" content="Dhruvang Gajjar" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.dhruvang.com/" />
+        <meta property="og:title" content="Dhruvang | JavaScript Developer" />
+        <meta property="og:description" content="I'm JavaScript Developer and mentor with 6+ Years of experience. Open to collaborate on JavaScript based projects." />
+        <meta property="og:image" content={Welcome} />
+
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://www.dhruvang.com/" />
+        <meta property="twitter:title" content="Dhruvang | JavaScript Developer" />
+        <meta property="twitter:description" content="I'm JavaScript Developer and mentor with 6+ Years of experience. Open to collaborate on JavaScript based projects." />
+        <meta property="twitter:image" content={Welcome} />
       </Head>
 
       <section className='max-w-3xl mx-auto px-4 mt-12 prose prose-xl dark:prose-invert'>
