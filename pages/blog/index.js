@@ -25,7 +25,7 @@ export default function Blog({ title, description, allPostsData }) {
             <meta name="description" content={description} />
             <meta name="keywords" content="" />
             <meta name="robots" content="index, follow" />
-            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+            <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
             <meta name="language" content="English" />
             <meta name="revisit-after" content="5 days" />
             <meta name="author" content="Dhruvang Gajjar" />

@@ -26,7 +26,7 @@ export default function Home({ allPostsData }) {
         <meta name="description" content="I'm JavaScript Developer and mentor with 6+ Years of experience. Open to collaborate on JavaScript based projects." />
         <meta name="keywords" content="webdev,dhruvang,dhruvang gajjar,champdecay,javascript,software engineer,web developer" />
         <meta name="robots" content="index, follow" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="language" content="English" />
         <meta name="revisit-after" content="5 days" />
         <meta name="author" content="Dhruvang Gajjar" />
