@@ -56,13 +56,13 @@ export default function Home({ allPostsData }) {
 
         <ul>
           <li>
-            <p>2021 - Present <br /><span>Uplers Solutions</span> <br />Senior JavScript Developer</p>
+            <p>JUL 2022 - Present<br /><span>Cygnet Infotech</span> <br />Senior Software Engineer</p>
           </li>
           <li>
-            <p>2017 - 2021 <br /><span>Uplers Solutions</span> <br />jQuery Developer</p>
+            <p>APR 2021 -  JUN 2022<br /><span>Uplers Solutions</span> <br />Senior JavScript Developer</p>
           </li>
           <li>
-            <p>2016 - 2017 <br /><span>Freelancer</span> <br />WordPress Developer</p>
+            <p>OCT 2017 - MAR 2021<br /><span>Uplers Solutions</span> <br />jQuery Developer</p>
           </li>
         </ul>
 
